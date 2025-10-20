@@ -1,0 +1,96 @@
+<mujoco model="shadow_hand_scene">
+
+  <!-- ========================================================= -->
+  <!--  Compiler and asset setup                                 -->
+  <!-- ========================================================= -->
+  <compiler
+      angle="radian"
+      autolimits="true"
+      meshdir="/Users/fardifafathmiulalam/Documents/GMU Academics/ECE 699 Robot Learning/project/mujoco_menagerie/shadow_hand/assets"
+      texturedir="/Users/fardifafathmiulalam/Documents/GMU Academics/ECE 699 Robot Learning/project/mujoco_menagerie/shadow_hand/assets"/>
+
+  <!-- ========================================================= -->
+  <!--  Physics and rendering                                    -->
+  <!-- ========================================================= -->
+  <option gravity="0 0 -9.81" integrator="RK4" timestep="0.002"/>
+
+  <visual>
+    <map znear="0.01" zfar="5" haze="0.1"/>
+    <rgba haze="0.95 0.95 0.95 1"/>
+    <quality shadowsize="2048"/>
+  </visual>
+
+  <!-- ========================================================= -->
+  <!--  Textures and materials                                   -->
+  <!-- ========================================================= -->
+  <asset>
+    <texture name="skybox" type="skybox" builtin="gradient"
+             rgb1="0.4 0.6 0.8" rgb2="0.1 0.1 0.1"
+             width="512" height="512"/>
+
+    <texture name="groundplane" type="2d" builtin="checker"
+             rgb1="0.3 0.35 0.4" rgb2="0.25 0.25 0.25"
+             width="512" height="512"/>
+
+    <material name="groundplane_mat"
+              texture="groundplane" texrepeat="5 5" reflectance="0.2"/>
+
+    <material name="mat_table" rgba="0.7 0.5 0.3 1"/>
+    <material name="mat_cube" rgba="0.9 0.2 0.2 1"/>
+    <material name="mat_sphere" rgba="0.2 0.6 0.9 1"/>
+    <material name="mat_cylinder" rgba="0.3 0.8 0.4 1"/>
+  </asset>
+
+  <!-- ========================================================= -->
+  <!--  Include Left Shadow Hand (now self-contained & positioned)-->
+  <!-- ========================================================= -->
+  <include file="/Users/fardifafathmiulalam/Documents/GMU Academics/ECE 699 Robot Learning/project/mujoco_menagerie/shadow_hand/left_hand.xml"/>
+
+  <!-- ========================================================= -->
+  <!--  Worldbody                                                -->
+  <!-- ========================================================= -->
+  <worldbody>
+
+    <!-- Floor -->
+    <geom name="floor"
+          type="plane"
+          size="6 6 0.1"
+          pos="0 0 -0.01"
+          material="groundplane_mat"/>
+
+    <!-- Table -->
+    <body name="table" pos="0 0 0">
+      <geom name="table_top" type="box" size="0.6 0.6 0.03" pos="0 0 0.70" material="mat_table"/>
+      <geom name="leg1" type="box" size="0.03 0.03 0.34" pos="0.55 0.55 0.36" material="mat_table"/>
+      <geom name="leg2" type="box" size="0.03 0.03 0.34" pos="-0.55 0.55 0.36" material="mat_table"/>
+      <geom name="leg3" type="box" size="0.03 0.03 0.34" pos="0.55 -0.55 0.36" material="mat_table"/>
+      <geom name="leg4" type="box" size="0.03 0.03 0.34" pos="-0.55 -0.55 0.36" material="mat_table"/>
+    </body>
+
+    <!-- Objects -->
+    <body name="object_cube" pos="0.35 0 0.78">
+      <geom type="box" size="0.04 0.04 0.04" material="mat_cube" mass="0.1"/>
+    </body>
+
+    <body name="object_sphere" pos="0.25 0.12 0.78">
+      <geom type="sphere" size="0.05" material="mat_sphere" mass="0.08"/>
+    </body>
+
+    <body name="object_cylinder" pos="0.25 -0.12 0.79">
+      <geom type="cylinder" size="0.03 0.06" material="mat_cylinder" mass="0.08"/>
+    </body>
+
+    <!-- Lighting -->
+    <light name="key_light" pos="0.8 0.5 1.6" dir="0 0 -1"
+           diffuse="1 1 1" specular="0.3 0.3 0.3"/>
+    <light name="fill_light" pos="-0.6 -0.5 1.2" dir="1 1 -1"
+           diffuse="0.6 0.6 0.6"/>
+    <light name="rim_light" pos="0 0 2" dir="0 0 -1"
+           diffuse="0.4 0.4 0.4"/>
+
+    <!-- Default camera -->
+    <camera name="overview" pos="0.7 -0.7 0.5" quat="0.7 0.3 0.1 0.6" fovy="45"/>
+
+  </worldbody>
+
+</mujoco>

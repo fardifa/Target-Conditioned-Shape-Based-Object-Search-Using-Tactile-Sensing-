@@ -1,0 +1,6 @@
+[submodule "Assets/assets/mujoco-menagerie"]
+	path = Assets/assets/mujoco-menagerie
+	url = https://github.com/deepmind/mujoco_menagerie
+[submodule "assets/mujoco-menagerie"]
+	path = assets/mujoco-menagerie
+	url = https://github.com/deepmind/mujoco_menagerie
