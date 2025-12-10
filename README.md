@@ -82,8 +82,8 @@ Example:
 ```bash
 mjpython sphere_data.py
 mjpython square_data.py
-mjpython scene_cylinder.py
-mjpython scene_cone.py
+mjpython cylinder_data.py
+mjpython cone_data.py
 ```
 Each script will:
 
