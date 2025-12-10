@@ -72,6 +72,21 @@ project/
 ``` </pre>
 ## 3. Train to Generate Dataset (optional)
 ## 4. Train Classifier (optional)
+The tactile shape classifier (ConvNeXt/CNN) is trained using a Jupyter Notebook  
+because GPU acceleration (Google Colab) significantly speeds up training.
+
+To train the classifier:
+
+1. Open the notebook Tactile_Shape_Classifier.ipynb and upload to Google Colab/Jupyter Notebook
+2. Set the runtime to **GPU** (Recommended GPUs: **NVIDIA L4**, **A100** or similar)
+3. Run all cells in the notebook to:
+   - Load the tactile dataset
+   - Train the classifier on: `sphere`, `cube`, `cylinder`, `cone`
+   - Export the trained model weights
+
+The notebook will generate a file named: **best_tactile_classifier_convnet.pth**
+Download this file and place it inside:
+├── best_tactile_classifier_convnet.pth
 ## 5. Train PPO (optional)
 ## 6. Run the Final Tactile Search System (inside `final_scene/`)
 
