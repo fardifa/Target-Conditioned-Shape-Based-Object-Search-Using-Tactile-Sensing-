@@ -70,8 +70,9 @@ project/
     └── (other helper modules)        # utils, tactile_image_buffer, etc.
 
 ``` </pre>
-
-### 5. Run the Final Tactile Search System (inside `final_scene/`)
+### 5. Train to Generate Dataset (optional)
+### 6. Train Classifier (optional)
+### 7. Run the Final Tactile Search System (inside `final_scene/`)
 
 All final runnable scripts for this project are located in the `final_scene/` directory.  
 Navigate into the folder:
@@ -79,7 +80,7 @@ Navigate into the folder:
 ```bash
 cd final_scene
 ```
-#### 5.1 Run Baseline Manual Active Search
+#### 7.1 Run Baseline Manual Active Search
 
 To run the manual baseline version, run:
 
@@ -106,7 +107,7 @@ This will:
 
 * Stop early if the target is confidently identified
 
-#### 5.2 Multi-Object PPO Tactile Search (Reinforcement Learning)
+#### 7.2 Multi-Object PPO Tactile Search (Reinforcement Learning)
 This mode runs the full target-conditioned tactile search using a trained PPO policy.
 
 Run:
