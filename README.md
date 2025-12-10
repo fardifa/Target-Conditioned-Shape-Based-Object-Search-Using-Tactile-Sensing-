@@ -40,30 +40,29 @@ cd Target-Conditioned-Shape-Based-Object-Search-Using-Tactile-Sensing
 <pre> ```
 project/
 │
-├── main_scene.py                 # Python launcher for MuJoCo scenes
-├── panda_scene.xml               # Scene with Franka Panda arm + table + objects
-├── shadow_hand_scene.xml         # Scene with Shadow Hand setup for tactile probing
+├── dataset/ # Scripts + data used to generate tactile images and train classifier
+│ ├── create_tactile_data.py
+│ ├── train_classifier.py
+│ └── best_tactile_classifier.pth
 │
-├── mujoco_menagerie/             # Prebuilt robot models from DeepMind’s MuJoCo Menagerie
-│   │
-│   ├── franka_emika_panda/
-│   │   ├── panda.xml             # Panda arm model definition
-│   │   └── assets/               # Meshes and textures for the Panda robot
-│   │       ├── panda_link0.obj
-│   │       ├── panda_link1.obj
-│   │       └── ...
-│   │
-│   └── shadow_hand/
-│       ├── left_hand.xml         # Shadow Hand model definition
-│       └── assets/               # Meshes and textures for the Shadow Hand
-│           ├── forearm_0.obj
-│           ├── palm.obj
-│           ├── f_proximal.obj
-│           └── ...
+├── mujoco_menagerie/ # (Optional) Menagerie robot models used during early experiments
+│ └── ... # Not required for final tactile search system
 │
-└── assets/                       # (Optional) additional custom assets for your own scenes
-    ├── textures/
-    └── meshes/
+├── main_scene.py # Early MuJoCo scene launcher (not used in final pipeline)
+├── panda_scene.xml # Early Panda-arm scene (archived)
+├── shadow_hand_scene.xml # Early Shadow Hand scene (archived)
+│
+└── final_scene/ # Final active tactile search system
+│
+├── main.py # Manual tactile search (fixed policy)
+├── multi_object_search_ppo.py # PPO-based multi-object tactile search
+│
+├── Search_scene.xml # Final MuJoCo tactile scene (finger + 4 objects)
+│
+├── best_tactile_classifier_convnet.pth # Trained tactile classifier
+├── 1000_ppo_policy.pth # Trained PPO policy (example)
+│
+└── (other internal modules) # motion_controller, tactile_env, search_manager, etc.
 ``` </pre>
 
 ### 5. Run the Final Tactile Search System (inside `final_scene/`)
