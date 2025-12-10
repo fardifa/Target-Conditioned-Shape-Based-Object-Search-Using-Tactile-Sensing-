@@ -1,0 +1,48 @@
+<mujoco model="finger_pad_scene_fixed">
+  <option timestep="0.002" gravity="0 0 0"/>
+  <visual>
+    <quality shadowsize="0"/>
+    <map force="0"/>
+    <rgba haze="1 1 1 1"/>
+  </visual>
+
+  <asset>
+    <material name="finger_mat" rgba="0.55 0.65 0.9 1"/>
+    <material name="pad_mat" rgba="0.1 1 0.1 1"/>
+    <material name="sphere_mat" rgba="0.2 0.4 1 1"/>
+    <material name="plane_mat" rgba="1 1 1 1"/>
+  </asset>
+
+  <default>
+    <geom solimp="0.8 0.8 0.01" solref="0.005 1" condim="3" friction="1 0.1 0.01"/>
+  </default>
+
+  <worldbody>
+    <!-- Bright white plane -->
+    <light name="key" pos="0.5 0.5 1" dir="-1 -1 -0.5" diffuse="1 1 1"/>
+    <geom name="floor" type="plane" size="2 2 0.01" material="plane_mat"/>
+
+    <!-- Camera -->
+    <camera name="front" pos="0 0.35 0.12" euler="-1.57 0 0"/>
+
+    <!-- Finger: base + tip + pad -->
+    <body name="finger" pos="0 0 0">
+      <geom name="finger_base" type="box" size="0.02 0.02 0.05" pos="0 0 0.05" material="finger_mat"/>
+      <geom name="finger_tip"  type="box" size="0.02 0.02 0.02" pos="0.03 0 0.07" material="finger_mat"/>
+      <geom name="pad_geom" type="box" size="0.007 0.015 0.015" pos="0.055 0 0.07" material="pad_mat"/>
+      <site name="pad_site" pos="0.055 0 0.07" size="0.006" rgba="0 1 0 1"/>
+    </body>
+
+    <!-- Sphere at same Z height -->
+    <body name="sphere" pos="0.09 0 0.07">
+      <freejoint/>
+      <geom name="sphere_geom" type="sphere" size="0.02" material="sphere_mat" friction="1 0.1 0.01"/>
+    </body>
+  </worldbody>
+
+  <sensor>
+    <!-- Direct force & touch sensors on the pad site -->
+    <force name="pad_force" site="pad_site"/>
+    <touch name="pad_touch" site="pad_site"/>
+  </sensor>
+</mujoco>
