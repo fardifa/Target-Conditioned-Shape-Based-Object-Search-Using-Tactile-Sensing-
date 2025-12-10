@@ -4,7 +4,7 @@ The project explores tactile-based object search and recognition using reinforce
 
 ---
 
-## Environment Setup **Note:** This setup is tested on macOS (Apple Silicon), specifically a MacBook Pro M3.
+## Environment Setup (For macOS (Apple Silicon))
 
 
 ### 1. Create a Conda Virtual Environment
@@ -66,56 +66,14 @@ project/
     └── meshes/
 ``` </pre>
 
-### 5. Modify the MuJoCo Files 
-Before running, ensure you’ve made the required XML modifications listed below.
-The default MuJoCo Menagerie files from Google need small edits for compatibility and correct positioning in this project.
+### 4. Run the Final Tactile Search System (inside `final_scene/`)
 
-File:
-mujoco_menagerie/franka_emika_panda/panda.xml
+All final runnable scripts for this project are located in the `final_scene/` directory.  
+Navigate into the folder:
 
-Change the <compiler> paths to absolute paths on your system (so MuJoCo can locate all .obj meshes):
-
+```bash
+cd final_scene
 ```
-<mujoco model="panda">
-  <compiler 
-      angle="radian" 
-      meshdir="/Users/<your-username>/.../ECE 699 Robot Learning/project/mujoco_menagerie/franka_emika_panda/assets"
-      autolimits="true"/>
-```
-File:
-mujoco_menagerie/shadow_hand/left_hand.xml
-
-Make these minimal but necessary edits:
-
-I. Set absolute mesh path
-```
-<compiler 
-    angle="radian"
-    meshdir="/Users/<your-username>/.../ECE 699 Robot Learning/project/mujoco_menagerie/shadow_hand/assets"
-    autolimits="true"/>
-```
-II. Adjust root body position and orientation so the hand rests just above the table:
-Find the line:
-```
-<body name="lh_forearm" childclass="left_hand" quat="0 1 0 1">
-```
-Replace it with:
-```
-<body name="lh_forearm"
-      childclass="left_hand"
-      pos="0 0 0.72"
-      quat="0 0.707 0 0.707">
-```
-
-### 6. Modify the MuJoCo Files 
-
-Once the environments and dependencies are set up, you can visualize the robot scenes directly in the MuJoCo viewer.
-
-```
-mjpython main_scene.py 
-```
-Change the scene path to either "panda_scene.xml" or "shadow_hand.xml" as per requirement.
-
 
 
 
