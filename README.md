@@ -4,16 +4,16 @@ The project explores tactile-based object search and recognition using reinforce
 
 ---
 
-## Environment Setup (For macOS (Apple Silicon))
+## 1. Environment Setup (For macOS (Apple Silicon))
 
 
-### 1. Create a Conda Virtual Environment
+### 1.1 Create a Conda Virtual Environment
 ```bash
 conda create -n rlsim python=3.11 -y
 conda activate rlsim
 ```
 
-### 2. Install MuJoCo and other dependencies
+### 1.2 Install MuJoCo and other dependencies
 
 Install the required system and Python dependencies:
 
@@ -23,14 +23,14 @@ brew install cmake glfw
 pip install mujoco==3.1.6 mujoco-python-viewer gymnasium numpy pillow imageio matplotlib \
 torch torchvision torchaudio 'stable-baselines3[extra]==2.3.2' pandas scikit-learn tqdm tensorboard pyyaml seaborn
 ```
-### 3. Install the MuJoCo Desktop App (optional but recommended)
+### 1.3 Install the MuJoCo Desktop App (optional but recommended)
 
 Download the .dmg installer for macOS from
 🔗 https://github.com/google-deepmind/mujoco/releases
 
 Open the .dmg and drag MuJoCo.app into your Applications folder.
 
-### 4. Clone and Organize the Project Repository
+## 2. Clone and Organize the Project Repository
 Clone this repository and navigate into it:
 ```
 git clone https://github.com/<your-username>/Target-Conditioned-Shape-Based-Object-Search-Using-Tactile-Sensing.git
@@ -70,9 +70,10 @@ project/
     └── (other helper modules)        # utils, tactile_image_buffer, etc.
 
 ``` </pre>
-### 5. Train to Generate Dataset (optional)
-### 6. Train Classifier (optional)
-### 7. Run the Final Tactile Search System (inside `final_scene/`)
+## 3. Train to Generate Dataset (optional)
+## 4. Train Classifier (optional)
+## 5. Train PPO (optional)
+## 6. Run the Final Tactile Search System (inside `final_scene/`)
 
 All final runnable scripts for this project are located in the `final_scene/` directory.  
 Navigate into the folder:
@@ -80,7 +81,7 @@ Navigate into the folder:
 ```bash
 cd final_scene
 ```
-#### 7.1 Run Baseline Manual Active Search
+#### 6.1 Run Baseline Manual Active Search
 
 To run the manual baseline version, run:
 
@@ -107,7 +108,7 @@ This will:
 
 * Stop early if the target is confidently identified
 
-#### 7.2 Multi-Object PPO Tactile Search (Reinforcement Learning)
+#### 6.2 Multi-Object PPO Tactile Search (Reinforcement Learning)
 This mode runs the full target-conditioned tactile search using a trained PPO policy.
 
 Run:
