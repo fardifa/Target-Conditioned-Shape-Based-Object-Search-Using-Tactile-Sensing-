@@ -71,6 +71,38 @@ project/
 
 ``` </pre>
 ## 3. Train to Generate Dataset (optional)
+To create your own tactile dataset, you must simulate each object separately.  
+Each object has its own MuJoCo XML scene and a corresponding Python script  
+that collects force data during probing.
+
+### 3.1 Generate Force CSV Files
+
+For each object (sphere, cube, cylinder, cone), run its data collection script.
+
+Example:
+
+```bash
+mjpython sphere_data.py
+mjpython square_data.py
+mjpython scene_cylinder.py
+mjpython scene_cone.py
+```
+Each script will:
+
+* Load the object-specific MuJoCo scene (e.g., scene_sphere.xml)
+* Perform a series of tactile probing motions
+* Record force readings and pad positions
+* Save the results as a CSV file in the dataset folder
+
+You should end up with files such as: sphere_force.csv, cube_force.csv etc.
+### 3.2 Convert Force Data into Tactile Images
+
+Once all force CSV files are generated, convert them into tactile images:
+```bash
+python generate_tactile_images.py
+```
+This script will read each force CSV file, generate pseudo-GelSight images (heatmaps) and save the images into: **dataset/images/<object_name>/**
+
 ## 4. Train Classifier (optional)
 The tactile shape classifier (ConvNeXt/CNN) is trained using a Jupyter Notebook  
 because GPU acceleration (Google Colab) significantly speeds up training.
