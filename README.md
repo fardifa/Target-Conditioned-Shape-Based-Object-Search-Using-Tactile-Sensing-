@@ -86,8 +86,25 @@ To train the classifier:
 
 The notebook will generate a file named: **best_tactile_classifier_convnet.pth**
 Download this file and place it inside:
+final scene
 ├── best_tactile_classifier_convnet.pth
 ## 5. Train PPO (optional)
+This is optional as a .pth file is already shared. PPO can be trained directly using the script inside `final_scene/`.
+
+Navigate to the folder:
+
+```bash
+cd final_scene
+```
+
+Run 
+
+```bash
+mjpython train_ppo.py
+```
+
+This will train a tactile search policy for the chosen target object.
+
 ## 6. Run the Final Tactile Search System (inside `final_scene/`)
 
 All final runnable scripts for this project are located in the `final_scene/` directory.  
