@@ -4,7 +4,8 @@ The project explores tactile-based object search and recognition using reinforce
 
 ---
 
-## Environment Setup (macOS – Apple Silicon)
+## Environment Setup **Note:** This setup is tested on macOS (Apple Silicon), specifically a MacBook Pro M3.
+
 
 ### 1. Create a Conda Virtual Environment
 ```bash
