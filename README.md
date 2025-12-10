@@ -66,7 +66,7 @@ project/
     └── meshes/
 ``` </pre>
 
-### 4. Run the Final Tactile Search System (inside `final_scene/`)
+### 5. Run the Final Tactile Search System (inside `final_scene/`)
 
 All final runnable scripts for this project are located in the `final_scene/` directory.  
 Navigate into the folder:
@@ -74,16 +74,47 @@ Navigate into the folder:
 ```bash
 cd final_scene
 ```
+#### 5.1 Run Baseline Manual Active Search
 
+To run the manual baseline version, run:
 
+```bash
+mjpython main.py
+```
 
+When prompted:
 
+```bash
+Select mode (manual/ppo/train_ppo): manual
+Enter target object: cube
+```
 
+This will:
 
+* Load the MuJoCo tactile scene (Search_scene.xml)
 
+* Touch each object (sphere → cube → cylinder → cone)
 
+* Generate pseudo-GelSight images during contact
 
+* Fuse classifier predictions incrementally
 
+* Stop early if the target is confidently identified
 
+#### 5.2 Multi-Object PPO Tactile Search (Reinforcement Learning)
+This mode runs the full target-conditioned tactile search using a trained PPO policy.
+
+Run:
+
+```bash
+mjpython multi_object_search_ppo.py
+```
+
+When prompted:
+
+```bash
+Enter target object for PPO multi-object search: cube
+Enter PPO model path: 1000_ppo_policy.pth
+```
 
 
