@@ -53,16 +53,22 @@ project/
 ├── shadow_hand_scene.xml # Early Shadow Hand scene (archived)
 │
 └── final_scene/ # Final active tactile search system
-│
-├── main.py # Manual tactile search (fixed policy)
-├── multi_object_search_ppo.py # PPO-based multi-object tactile search
-│
-├── Search_scene.xml # Final MuJoCo tactile scene (finger + 4 objects)
-│
-├── best_tactile_classifier_convnet.pth # Trained tactile classifier
-├── 1000_ppo_policy.pth # Trained PPO policy (example)
-│
-└── (other internal modules) # motion_controller, tactile_env, search_manager, etc.
+    │
+    ├── main.py                       # Manual tactile search (fixed policy)
+    ├── multi_object_search_ppo.py    # PPO-based multi-object tactile search
+    │
+    ├── Search_scene.xml              # Final MuJoCo tactile scene (finger + 4 objects)
+    │
+    ├── best_tactile_classifier_convnet.pth   # Trained tactile classifier
+    ├── 1000_ppo_policy.pth                   # Example trained PPO policy
+    │
+    ├── motion_controller.py          # Tactile probing controller (touch cycles, pose control)
+    ├── tactile_env.py                # PPO environment wrapper for tactile search
+    ├── search_manager.py             # Bayesian incremental fusion of classifier predictions
+    ├── classifier.py                 # Classifier interface for ConvNeXt model
+    │
+    └── (other helper modules)        # utils, tactile_image_buffer, etc.
+
 ``` </pre>
 
 ### 5. Run the Final Tactile Search System (inside `final_scene/`)
