@@ -116,5 +116,11 @@ When prompted:
 Enter target object for PPO multi-object search: cube
 Enter PPO model path: 1000_ppo_policy.pth
 ```
+This will:
 
+* Initialize PPO environment (tactile_env.py)
+
+* Run multi-step tactile episodes
+
+* Learn when to explore, reject, or confirm
 
