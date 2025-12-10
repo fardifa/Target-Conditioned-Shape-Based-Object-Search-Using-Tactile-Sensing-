@@ -71,9 +71,7 @@ project/
 
 ``` </pre>
 ## 3. Train to Generate Dataset (optional)
-To create your own tactile dataset, you must simulate each object separately.  
-Each object has its own MuJoCo XML scene and a corresponding Python script  
-that collects force data during probing.
+To create your own tactile dataset, you must simulate each object separately. Each object has its own MuJoCo XML scene and a corresponding Python script that collects force data during probing.
 
 ### 3.1 Generate Force CSV Files
 
